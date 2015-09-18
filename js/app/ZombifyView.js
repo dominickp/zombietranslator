@@ -2,8 +2,8 @@ define(['jquery', 'Zombify'], function($, Zombify) {
 
     var ZombifyView = function() {
         this.zombify = new Zombify();
-        this.zombifyView();
-        this.unzombifyView();
+        this.zombifyView;
+        this.unzombifyView;
         this.listenTypeEnglish();
         this.listenTypeZombie();
 
