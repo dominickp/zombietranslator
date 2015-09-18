@@ -24,12 +24,12 @@ define(['jquery', 'Zombify'], function($, Zombify) {
     };
 
     ZombifyView.prototype.unzombifyView = function() {
-        $('#english').val(this.zombify.zombify($('#zombie').val()));
+        $('#english').val(this.zombify.unzombify($('#zombie').val()));
         console.log('unzombifyView');
     };
 
     ZombifyView.prototype.zombifyView = function() {
-        $('#zombie').val(this.zombify.unzombify($('#english').val()));
+        $('#zombie').val(this.zombify.zombify($('#english').val()));
         console.log('zombifyView');
     };
 
