@@ -10,9 +10,11 @@ define(['Zombify'], function(Zombify){
 
         });
 
-        describe('zombify', function(){
+        describe('Rule 1', function(){
             it("should replace 'i' or 'I' with 'rrRr'", function(){
-                expect(zombify.zombify('i')).toBe('rrRr');
+                expect(zombify.rule_5('i')).toBe('rrRr');
+                expect(zombify.rule_5('Correct me if I\'m wrong')).toBe('Correct me rrRrf rrRr\'m wrong');
+                expect(zombify.rule_5('I can hold a tiki')).toBe('rrRr can hold a trrRrkrrRr');
             });
 
         });
