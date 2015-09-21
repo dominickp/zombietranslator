@@ -232,9 +232,9 @@ define(['Zombify'], function (Zombify) {
                 expect(zombify.rule_10(sentence)).not.toMatch(/Ok/g);
             });
             it("should throw an error if input is not a string", function () {
-                expect(function (zombify) {zombify.rule_9();}).toThrowError();
-                expect(function (zombify) {zombify.rule_9(1);}).toThrowError();
-                expect(function (zombify) {zombify.rule_9({});}).toThrowError();
+                expect(function (zombify) {zombify.rule_10();}).toThrowError();
+                expect(function (zombify) {zombify.rule_10(1);}).toThrowError();
+                expect(function (zombify) {zombify.rule_10({});}).toThrowError();
             });
         });
 
