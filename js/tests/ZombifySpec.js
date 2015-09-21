@@ -45,6 +45,28 @@ define(['Zombify'], function (Zombify) {
             });
         });
 
+        describe('Rule 3', function () {
+            it("should capitalize the starts of sentences", function () {
+                expect(zombify.rule_3('that is a great story.')).toBe('That is a great story.');
+                expect(zombify.rule_3('a question? this is another sentence.')).toBe('A question? This is another sentence.');
+                expect(zombify.rule_3('Already capitalized')).toBe('Already capitalized');
+            });
+            it("should use '.!?' to check for ends of sentences", function () {
+                expect(zombify.rule_3('a scentence? yes')).toBe('A scentence? Yes');
+                expect(zombify.rule_3('a scentence! yes')).toBe('A scentence! Yes');
+                expect(zombify.rule_3('a scentence. yes')).toBe('A scentence. Yes');
+            });
+            it("should throw an error if input is not a string", function () {
+                expect(function (zombify) {zombify.rule_3();}).toThrowError();
+                expect(function (zombify) {zombify.rule_3(1);}).toThrowError();
+                expect(function (zombify) {zombify.rule_3({});}).toThrowError();
+            });
+            it("should keep the same number of characters", function () {
+                var length = 'a question? this is another sentence.'.length;
+                expect(zombify.rule_3('a question? this is another sentence.').length).toEqual(length);
+            });
+        });
+
         describe('Rule 5', function () {
             it("should replace 'i' or 'I' with 'rrRr'", function () {
                 expect(zombify.rule_5('i')).toBe('rrRr');
