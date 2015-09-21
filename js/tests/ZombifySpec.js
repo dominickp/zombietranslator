@@ -110,7 +110,7 @@ define(['Zombify'], function (Zombify) {
                 expect(zombify.rule_6('that is a great story.')).toBe('that is a great strrrRrry.');
                 expect(zombify.rule_6('a question? this is another sentence.')).toBe('a questirrrRrn? this is anrrrRrther sentence.');
                 expect(zombify.rule_6('Already capitalized')).toBe('Already capitalized');
-            })
+            });
             it("should remove all O's & o's", function () {
                 var scentence = 'The quick brown fox jumps over the lazy dog';
                 expect(zombify.rule_6(scentence)).not.toMatch(/o/g);
@@ -122,6 +122,44 @@ define(['Zombify'], function (Zombify) {
                 expect(function (zombify) {zombify.rule_6();}).toThrowError();
                 expect(function (zombify) {zombify.rule_6(1);}).toThrowError();
                 expect(function (zombify) {zombify.rule_6({});}).toThrowError();
+            });
+        });
+
+        describe('Rule 7', function () {
+            var scentence = 'The quick brown fox jumps over the lazy dog';
+            it("should replace 'u' or 'U' with 'rrrrRr'", function () {
+                expect(zombify.rule_7(scentence)).toBe('The qrrrrRrick brown fox jrrrrRrmps over the lazy dog');
+                expect(zombify.rule_7('a question? this is another sentence.')).toBe('a qrrrrRrestion? this is another sentence.');
+                expect(zombify.rule_7('Already capitalized')).toBe('Already capitalized');
+            });
+            it("should remove all U's & u's", function () {
+                expect(zombify.rule_7(scentence)).not.toMatch(/u/g);
+                expect(zombify.rule_7(scentence)).not.toMatch(/U/g);
+                expect(zombify.rule_7('uuuUUU')).not.toMatch(/u/g);
+                expect(zombify.rule_7('uuuUUU')).not.toMatch(/U/g);
+            });
+            it("should throw an error if input is not a string", function () {
+                expect(function (zombify) {zombify.rule_7();}).toThrowError();
+                expect(function (zombify) {zombify.rule_7(1);}).toThrowError();
+                expect(function (zombify) {zombify.rule_7({});}).toThrowError();
+            });
+        });
+
+        describe('Rule 8', function () {
+            var scentence = 'The quick brown fox jumps over the lazy dog';
+            it("should replace 'r' or 'R' with 'RR'", function () {
+                expect(zombify.rule_8(scentence)).toBe('The quick bRRown fox jumps oveRR the lazy dog');
+                expect(zombify.rule_8('a question? this is another sentence.')).toBe('a question? this is anotheRR sentence.');
+                expect(zombify.rule_8('Already capitalized')).toBe('AlRReady capitalized');
+            });
+            it("should remove all r's", function () {
+                expect(zombify.rule_8(scentence)).not.toMatch(/r/g);
+                expect(zombify.rule_8('rrrrrrRRR')).not.toMatch(/r/g);
+            });
+            it("should throw an error if input is not a string", function () {
+                expect(function (zombify) {zombify.rule_8();}).toThrowError();
+                expect(function (zombify) {zombify.rule_8(1);}).toThrowError();
+                expect(function (zombify) {zombify.rule_8({});}).toThrowError();
             });
         });
 
