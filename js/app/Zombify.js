@@ -11,6 +11,8 @@ define([], function() {
         this.rule_6;
         this.rule_7;
         this.rule_8;
+        this.rule_9;
+        this.rule_10;
     };
 
     Zombify.prototype.rule_1 = function(input) {
@@ -54,13 +56,21 @@ define([], function() {
         // 8. "r" or "R' is replaced by "RR"
         return input.replace(/R/g, 'RR').replace(/r/g, 'RR');
     };
+    Zombify.prototype.rule_9 = function(input) {
+        // 9. replace ':)' with '☠'
+        return input.replace(/:\)/g, '☠');
+    };
+    Zombify.prototype.rule_10 = function(input) {
+        // 8. "ok" is replaced by "ECHHh"
+        return input.replace(/ok/g, 'ECHHH').replace(/OK/g, 'ECHHH').replace(/Ok/g, 'ECHHH');
+    };
 
     Zombify.prototype.zombify = function(english) {
 
         // Cast to string
         var zombified = String(english);
 
-        zombified =  this.rule_3(this.rule_7(this.rule_6(this.rule_5(this.rule_4(this.rule_2(this.rule_8(this.rule_1(zombified))))))));
+        zombified =  this.rule_3(this.rule_7(this.rule_6(this.rule_9(this.rule_10(this.rule_5(this.rule_4(this.rule_2(this.rule_8(this.rule_1(zombified))))))))));
 
         return zombified;
     };
