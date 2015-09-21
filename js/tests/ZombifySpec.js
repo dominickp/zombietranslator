@@ -35,13 +35,13 @@ define(['Zombify'], function (Zombify) {
             });
             it("should not effect other strings", function () {
                 var no_transform = 'The quick brown fox jumps onto the lazy dog';
-                expect(zombify.rule_1(no_transform)).not.toContain('rh');
-                expect(zombify.rule_1(no_transform)).toBe(no_transform);
+                expect(zombify.rule_2(no_transform)).not.toContain('hra');
+                expect(zombify.rule_2(no_transform)).toBe(no_transform);
             });
             it("should throw an error if input is not a string", function () {
-                expect(function (zombify) {zombify.rule_1();}).toThrowError();
-                expect(function (zombify) {zombify.rule_1(1);}).toThrowError();
-                expect(function (zombify) {zombify.rule_1({});}).toThrowError();
+                expect(function (zombify) {zombify.rule_2();}).toThrowError();
+                expect(function (zombify) {zombify.rule_2(1);}).toThrowError();
+                expect(function (zombify) {zombify.rule_2({});}).toThrowError();
             });
         });
 
