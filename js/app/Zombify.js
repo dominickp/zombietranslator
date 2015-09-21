@@ -62,7 +62,7 @@ define([], function() {
     };
     Zombify.prototype.rule_10 = function(input) {
         // 8. "ok" is replaced by "ECHHh"
-        return input.replace(/ok/g, 'ECHHH').replace(/OK/g, 'ECHHH').replace(/Ok/g, 'ECHHH');
+        return input.replace(/ok/g, 'ECHHh').replace(/OK/g, 'ECHHh').replace(/Ok/g, 'ECHHh');
     };
 
     Zombify.prototype.zombify = function(english) {

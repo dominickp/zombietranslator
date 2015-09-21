@@ -180,6 +180,22 @@ define(['Zombify'], function (Zombify) {
             });
         });
 
+        describe('Rule 10', function () {
+            var sentence = 'The quick brown fox jumps over the lazy dog. Ok?';
+            it("should replace 'ok', 'Ok', or 'OK' with 'ECHHh'", function () {
+                expect(zombify.rule_10(sentence)).toBe('The quick brown fox jumps over the lazy dog. ECHHh?');
+                expect(zombify.rule_10('ok... OK? Ok!')).toBe('ECHHh... ECHHh? ECHHh!');
+            });
+            it("should remove all 'Ok's", function () {
+                expect(zombify.rule_10(sentence)).not.toMatch(/Ok/g);
+            });
+            it("should throw an error if input is not a string", function () {
+                expect(function (zombify) {zombify.rule_9();}).toThrowError();
+                expect(function (zombify) {zombify.rule_9(1);}).toThrowError();
+                expect(function (zombify) {zombify.rule_9({});}).toThrowError();
+            });
+        });
+
     });
 
 
