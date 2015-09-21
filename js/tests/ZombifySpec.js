@@ -76,7 +76,9 @@ define(['Zombify'], function (Zombify) {
             it("should remove all E's & e's", function () {
                 var scentence = 'The quick brown fox jumps over the lazy dog';
                 expect(zombify.rule_4(scentence)).not.toMatch(/e/g);
-                expect(zombify.rule_4('eeeee')).not.toMatch(/e/g);
+                expect(zombify.rule_4(scentence)).not.toMatch(/E/g);
+                expect(zombify.rule_4('eeeeEEE')).not.toMatch(/e/g);
+                expect(zombify.rule_4('eeeeEEE')).not.toMatch(/e/g);
             });
             it("should throw an error if input is not a string", function () {
                 expect(function (zombify) {zombify.rule_4();}).toThrowError();
@@ -100,6 +102,26 @@ define(['Zombify'], function (Zombify) {
                 expect(function (zombify) {zombify.rule_5();}).toThrowError();
                 expect(function (zombify) {zombify.rule_5(1);}).toThrowError();
                 expect(function (zombify) {zombify.rule_5({});}).toThrowError();
+            });
+        });
+
+        describe('Rule 6', function () {
+            it("should replace 'o' or 'O' with 'rrrRr'", function () {
+                expect(zombify.rule_6('that is a great story.')).toBe('that is a great strrrRrry.');
+                expect(zombify.rule_6('a question? this is another sentence.')).toBe('a questirrrRrn? this is anrrrRrther sentence.');
+                expect(zombify.rule_6('Already capitalized')).toBe('Already capitalized');
+            })
+            it("should remove all O's & o's", function () {
+                var scentence = 'The quick brown fox jumps over the lazy dog';
+                expect(zombify.rule_6(scentence)).not.toMatch(/o/g);
+                expect(zombify.rule_6(scentence)).not.toMatch(/O/g);
+                expect(zombify.rule_6('oooOOO')).not.toMatch(/o/g);
+                expect(zombify.rule_6('oooOOO')).not.toMatch(/O/g);
+            });
+            it("should throw an error if input is not a string", function () {
+                expect(function (zombify) {zombify.rule_6();}).toThrowError();
+                expect(function (zombify) {zombify.rule_6(1);}).toThrowError();
+                expect(function (zombify) {zombify.rule_6({});}).toThrowError();
             });
         });
 
