@@ -11,6 +11,41 @@ define(['Zombify'], function (Zombify) {
         });
 
         describe('Rule 1', function () {
+            it("should replace a lower-case 'r' at the end of words with 'rh''", function () {
+                expect(zombify.rule_1('My car was totalled.')).toBe('My carh was totalled.');
+                expect(zombify.rule_1('That\'s really cool.')).not.toBe('That\'s rheally cool.');
+            });
+            it("should not effect other strings", function () {
+                var no_transform = 'The quick brown fox jumps onto the lazy dog';
+                expect(zombify.rule_1(no_transform)).not.toContain('rh');
+                expect(zombify.rule_1(no_transform)).toBe(no_transform);
+            });
+            it("should throw an error if input is not a string", function () {
+                expect(function (zombify) {zombify.rule_1();}).toThrowError();
+                expect(function (zombify) {zombify.rule_1(1);}).toThrowError();
+                expect(function (zombify) {zombify.rule_1({});}).toThrowError();
+            });
+        });
+
+        describe('Rule 2', function () {
+            it("should replace an 'a' or 'A' by itself will with a 'hra'", function () {
+                expect(zombify.rule_2('That is a great story.')).toBe('That is hra great story.');
+                expect(zombify.rule_2('A great tale.')).toBe('hra great tale.');
+                expect(zombify.rule_2('That\'s really cool.')).not.toBe('That\'s rehrally cool.');
+            });
+            it("should not effect other strings", function () {
+                var no_transform = 'The quick brown fox jumps onto the lazy dog';
+                expect(zombify.rule_1(no_transform)).not.toContain('rh');
+                expect(zombify.rule_1(no_transform)).toBe(no_transform);
+            });
+            it("should throw an error if input is not a string", function () {
+                expect(function (zombify) {zombify.rule_1();}).toThrowError();
+                expect(function (zombify) {zombify.rule_1(1);}).toThrowError();
+                expect(function (zombify) {zombify.rule_1({});}).toThrowError();
+            });
+        });
+
+        describe('Rule 5', function () {
             it("should replace 'i' or 'I' with 'rrRr'", function () {
                 expect(zombify.rule_5('i')).toBe('rrRr');
                 expect(zombify.rule_5('Correct me if I\'m wrong')).toBe('Correct me rrRrf rrRr\'m wrong');
@@ -22,9 +57,9 @@ define(['Zombify'], function (Zombify) {
                 expect(zombify.rule_5(no_transform)).toBe(no_transform);
             });
             it("should throw an error if input is not a string", function () {
-                expect(function (zombify) {zombify.rule_5();}).toThrow();
-                expect(function (zombify) {zombify.rule_5(1);}).toThrow();
-                expect(function (zombify) {zombify.rule_5({});}).toThrow();
+                expect(function (zombify) {zombify.rule_5();}).toThrowError();
+                expect(function (zombify) {zombify.rule_5(1);}).toThrowError();
+                expect(function (zombify) {zombify.rule_5({});}).toThrowError();
             });
         });
 
