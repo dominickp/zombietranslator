@@ -10,6 +10,48 @@ define(['Zombify'], function (Zombify) {
 
         });
 
+        var sentence = 'The quick brown fox jumps over the lazy dog.';
+        it("should return a some non-empty string", function () {
+            expect(zombify.zombify(sentence)).not.toBeNull();
+            expect(zombify.zombify(sentence)).toBeDefined();
+            expect(zombify.zombify(sentence).length).toBeGreaterThan(0);
+        });
+        it("should make its output different from the input", function () {
+            expect(zombify.zombify(sentence)).not.toBe(sentence);
+            expect(zombify.zombify(sentence).length).not.toBe(sentence.length);
+        });
+
+        it("should translate english into zombie", function () {
+            expect(zombify.zombify(sentence)).toBe('Thrr qrrrrRrrrRrck bRRrrrRrwn frrrRrx jrrrrRrmps rrrRrvrrRRh thrr lazy drrrRrg.');
+            expect(zombify.zombify('Hello :)')).toBe('HrrllrrrRr ☠');
+        });
+
+        it("should call each rule function", function () {
+            spyOn(zombify, "rule_1").and.returnValue('string');
+            spyOn(zombify, "rule_2").and.returnValue('string');
+            spyOn(zombify, "rule_3").and.returnValue('string');
+            spyOn(zombify, "rule_4").and.returnValue('string');
+            spyOn(zombify, "rule_5").and.returnValue('string');
+            spyOn(zombify, "rule_6").and.returnValue('string');
+            spyOn(zombify, "rule_7").and.returnValue('string');
+            spyOn(zombify, "rule_8").and.returnValue('string');
+            spyOn(zombify, "rule_9").and.returnValue('string');
+            spyOn(zombify, "rule_10").and.returnValue('string');
+
+            zombify.zombify(sentence);
+
+            expect(zombify.rule_1).toHaveBeenCalled();
+            expect(zombify.rule_2).toHaveBeenCalled();
+            expect(zombify.rule_3).toHaveBeenCalled();
+            expect(zombify.rule_4).toHaveBeenCalled();
+            expect(zombify.rule_5).toHaveBeenCalled();
+            expect(zombify.rule_6).toHaveBeenCalled();
+            expect(zombify.rule_7).toHaveBeenCalled();
+            expect(zombify.rule_8).toHaveBeenCalled();
+            expect(zombify.rule_9).toHaveBeenCalled();
+            expect(zombify.rule_10).toHaveBeenCalled();
+        });
+
         describe('Rule 1', function () {
             it("should replace a lower-case 'r' at the end of words with 'rh''", function () {
                 expect(zombify.rule_1('My car was totalled.')).toBe('My carh was totalled.');
