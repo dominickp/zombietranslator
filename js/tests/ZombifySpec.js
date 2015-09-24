@@ -94,13 +94,13 @@ define(['Zombify'], function (Zombify) {
         });
 
         describe('Rule 2', function () {
-            it("should replace an 'a' or 'A' by itself will with a 'hra'", function () {
-                expect(zombify.rule_2('That is a great story.')).toBe('That is hra great story.');
-                expect(zombify.rule_2('A great tale.')).toBe('hra great tale.');
+            it("should replace an 'a' or 'A' with a 'hra'", function () {
+                expect(zombify.rule_2('That is a great story.')).toBe('Thhrat is hra grehrat story.');
+                expect(zombify.rule_2('A great tale.')).toBe('hra grehrat thrale.');
                 expect(zombify.rule_2('That\'s really cool.')).not.toBe('That\'s rehrally cool.');
             });
             it("should not effect other strings", function () {
-                var no_transform = 'The quick brown fox jumps onto the lazy dog';
+                var no_transform = 'The quick brown fox jumps onto the lucky dog';
                 expect(zombify.rule_2(no_transform)).not.toContain('hra');
                 expect(zombify.rule_2(no_transform)).toBe(no_transform);
             });

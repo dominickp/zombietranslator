@@ -23,7 +23,8 @@ define([], function() {
     };
     Zombify.prototype.rule_2 = function(input) {
         // 2. an "a" or "A" by itself will be replaced with "hra".
-        return input.replace(/\b[Aa]\b/g, 'hra');
+        // CHANGED -- an "a" or "A" is replaced with "hra".Edited to be easier.
+        return input.replace(/a/ig, 'hra');
     };
     Zombify.prototype.rule_3 = function(input) {
         // 3. the starts of sentences are capitalised (the "start of a sentence" is any occurrence of
