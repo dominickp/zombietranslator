@@ -17,7 +17,7 @@ define([], function() {
 
     Zombify.prototype.rule_1 = function(input) {
         //1. lower-case "r" at the end of words replaced with "rh".
-        return input.replace(/\b\w+(r)\b/g, function(match){
+        return input.replace(/r\b/g, function(match){
             return match + 'h';
         });
     };
@@ -54,7 +54,8 @@ define([], function() {
     };
     Zombify.prototype.rule_8 = function(input) {
         // 8. "r" or "R' is replaced by "RR"
-        return input.replace(/R/g, 'RR').replace(/r/g, 'RR');
+        //return input.replace(/R/g, 'RR').replace(/r/g, 'RR');
+        return input.replace(/(?!(rh\b))r/gi, 'RR');
     };
     Zombify.prototype.rule_9 = function(input) {
         // 9. replace ':)' with '☠'

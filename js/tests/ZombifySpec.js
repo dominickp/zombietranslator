@@ -22,9 +22,32 @@ define(['Zombify'], function (Zombify) {
         });
 
         it("should translate english into zombie", function () {
-            expect(zombify.zombify(sentence)).toBe('Thrr qrrrrRrrrRrck bRRrrrRrwn frrrRrx jrrrrRrmps rrrRrvrrRRh thrr lazy drrrRrg.');
+
+            var capitalize = function(input){
+                return input.charAt(0).toUpperCase() + input.substring(1);
+            };
+            //expect(zombify.zombify(sentence)).toBe('Thrr qrrrrRrrrRrck bRRrrrRrwn frrrRrx jrrrrRrmps rrrRrvrrRRh thrr lazy drrrRrg.');
             expect(zombify.zombify('Hello :)')).toBe('HrrllrrrRr ☠');
+            expect(zombify.zombify('Terror')).toBe('TrrRRRRrrrRrrh');
+            expect(zombify.zombify('JaZahn')).toBe('JhraZhrahn');
+            expect(zombify.zombify('petty')).toBe(capitalize('prrtty'));
+            expect(zombify.zombify('pretty')).toBe(capitalize('pRRrrtty'));
+            expect(zombify.zombify('brains')).toBe(capitalize('bRRhrarrRrns'));
+            expect(zombify.zombify('onomatopoeia')).toBe(capitalize('rrrRrnrrrRrmhratrrrRrprrrRrrrrrRrhra'));
         });
+
+        /*
+
+         JaZahn -> JhraZhrahn
+
+         petty -> prrtty
+
+         pretty -> pRRrrtty
+
+         brains -> bRRhrarrRrns
+
+         onomatopoeia  -> rrrRrnrrrRrmhratrrrRrprrrRrrrrrRrhra
+         */
 
         it("should call each rule function", function () {
             spyOn(zombify, "rule_1").and.returnValue('string');
@@ -51,6 +74,7 @@ define(['Zombify'], function (Zombify) {
             expect(zombify.rule_9).toHaveBeenCalled();
             expect(zombify.rule_10).toHaveBeenCalled();
         });
+
 
         describe('Rule 1', function () {
             it("should replace a lower-case 'r' at the end of words with 'rh''", function () {
