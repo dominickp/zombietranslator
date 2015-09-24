@@ -36,19 +36,6 @@ define(['Zombify'], function (Zombify) {
             expect(zombify.zombify('onomatopoeia')).toBe(capitalize('rrrRrnrrrRrmhratrrrRrprrrRrrrrrRrhra'));
         });
 
-        /*
-
-         JaZahn -> JhraZhrahn
-
-         petty -> prrtty
-
-         pretty -> pRRrrtty
-
-         brains -> bRRhrarrRrns
-
-         onomatopoeia  -> rrrRrnrrrRrmhratrrrRrprrrRrrrrrRrhra
-         */
-
         it("should call each rule function", function () {
             spyOn(zombify, "rule_1").and.returnValue('string');
             spyOn(zombify, "rule_2").and.returnValue('string');
@@ -75,6 +62,52 @@ define(['Zombify'], function (Zombify) {
             expect(zombify.rule_10).toHaveBeenCalled();
         });
 
+        it("should replace a lower-case 'r' at the end of words with 'rh''", function () {
+            expect(zombify.zombify('My car.')).toBe('My chrarh.');
+        });
+
+        it("should replace an 'a' or 'A' with a 'hra'", function (){
+            expect(zombify.zombify('Aaaa.')).toBe('Hrahrahrahra.');
+        });
+
+        it("should capitalize the starts of sentences", function () {
+            var sentence = 'my example scentence.';
+            var sentence2 = 'you know it!';
+            expect(zombify.zombify(sentence).charAt(0)).toBe(sentence.charAt(0).toUpperCase());
+            expect(zombify.zombify(sentence2).charAt(0)).toBe(sentence2.charAt(0).toUpperCase());
+        });
+
+        it("should replace 'e' or 'E' with 'rr'", function () {
+            expect(zombify.zombify('eeeEEE.')).toBe('Rrrrrrrrrrrr.');
+            expect(zombify.zombify('E e ee.')).toBe('Rr rr rrrr.');
+        });
+
+        it("should replace 'i' or 'I' with 'rrRr'", function () {
+            expect(zombify.zombify('iiiIII.')).toBe('RrRrrrRrrrRrrrRrrrRrrrRr.');
+            expect(zombify.zombify('I i ii.')).toBe('RrRr rrRr rrRrrrRr.');
+        });
+
+        it("should replace 'o' or 'O' with 'rrrRr'", function () {
+            expect(zombify.zombify('oooOOO.')).toBe('RrrRrrrrRrrrrRrrrrRrrrrRrrrrRr.');
+            expect(zombify.zombify('O o oo.')).toBe('RrrRr rrrRr rrrRrrrrRr.');
+        });
+
+        it("should replace 'u' or 'U' with 'rrrrRr'", function () {
+            expect(zombify.zombify('uuuUUU.')).toBe('RrrrRrrrrrRrrrrrRrrrrrRrrrrrRrrrrrRr.');
+            expect(zombify.zombify('U u uu.')).toBe('RrrrRr rrrrRr rrrrRrrrrrRr.');
+        });
+
+        it("should replace 'r' or 'R' with 'RR'", function () {
+            expect(zombify.zombify('rrrRRR.')).toBe('RRRRRRRRRRRR.');
+        });
+
+        it("should replace ':)' with '☠' (skull and crossbones)", function () {
+            expect(zombify.zombify(':( :) =] 8)')).toBe(':( ☠ =] 8)');
+        });
+
+        it("should replace 'ok', 'Ok', or 'OK' with 'ECHHh'", function () {
+            expect(zombify.rule_10('ok... OK? Ok!')).toBe('ECHHh... ECHHh? ECHHh!');
+        });
 
         describe('Rule 1', function () {
             it("should replace a lower-case 'r' at the end of words with 'rh''", function () {
