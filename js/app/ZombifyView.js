@@ -1,7 +1,8 @@
-define(['jquery', 'Zombify'], function($, Zombify) {
+define(['jquery', 'Zombify', 'UnZombify'], function($, Zombify, UnZombify) {
 
     var ZombifyView = function() {
         this.zombify = new Zombify();
+        this.unzombify = new UnZombify();
         this.zombifyView;
         this.unzombifyView;
         this.listenTypeEnglish();
@@ -24,7 +25,7 @@ define(['jquery', 'Zombify'], function($, Zombify) {
     };
 
     ZombifyView.prototype.unzombifyView = function() {
-        $('#english').val(this.zombify.unzombify($('#zombie').val()));
+        $('#english').val(this.unzombify.unzombify($('#zombie').val()));
         console.log('unzombifyView');
     };
 

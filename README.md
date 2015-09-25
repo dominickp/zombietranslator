@@ -21,7 +21,7 @@ A Javascript app which translates from English to zombie. Makes use of Karma, Ja
 ## Testing
 I wrote most of my translation logic before the assignment was updated, so I was under the assumption that each rule needed to be its own function and modular enough to test separately. My tests were initially geared at each of those specific functions. After the assignment was updated, I made some attempts to get some test coverage for the individual rules from the result of the main translation function.
 
-Overall there were 46 tests with 134 expects.
+Overall there were 46 tests with 134 expects. Tests can be found in /js/tests/ZombifySpec.js
 
 ### Individual Rule Function Tests
 
