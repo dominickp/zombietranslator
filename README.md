@@ -29,22 +29,31 @@ Within each rule function, I implemented at least 3 expects, most using a toBe()
 
 **Rule 1**
 7 expects using toBe, not.toBe, not.toContain, and toThrowError.
+
 **Rule 2**
 8 expects using toBe, not.toBe, not.toContain, and toThrowError.
+
 **Rule 3**
 8 expects using toBe, not.toBe, not.toContain, toThrowError, and toEqual.
+
 **Rule 4**
 10 expects using toBe, not.toBe, not.toMatch, and toThrowError.
+
 **Rule 5**
 8 expects using toBe, not.toBe, not.toContain, and toThrowError.
+
 **Rule 6**
 10 expects using toBe, not.toBe, not.toMatch, and toThrowError.
+
 **Rule 7**
 10 expects using toBe, not.toBe, not.toMatch, and toThrowError.
+
 **Rule 8**
 8 expects using toBe, not.toBe, not.toMatch, and toThrowError.
+
 **Rule 9**
 7 expects using toBe, not.toBe, not.toMatch, and toThrowError.
+
 **Rule 10**
 6 expects using toBe, not.toBe, not.toMatch, and toThrowError.
 
