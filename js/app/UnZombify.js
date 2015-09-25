@@ -36,7 +36,7 @@ define([], function() {
     };
     UnZombify.prototype.rule_4 = function(input) {
         // 4. "e" or "E" is replaced by "rr"
-        return input.replace(/rr/ig, 'e');
+        return input.replace(/rr/g, 'e');
     };
     UnZombify.prototype.rule_5 = function(input) {
         // 5. "i" or "I" is replaced by "rrRr"
