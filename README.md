@@ -26,7 +26,7 @@ I wrote most of my translation logic before the assignment was updated, so I was
 
 In Zombify, there were 46 tests with 134 expects. Tests can be found in /js/tests/ZombifySpec.js
 
-In my UnZombify attempt, there were 10 tests with about 2 expects each.
+In my UnZombify attempt, there were 10 tests with about 2 expects each. These tests can be found in /js/tests/UnZombifySpec.js
 
 ### Individual Rule Function Tests
 
